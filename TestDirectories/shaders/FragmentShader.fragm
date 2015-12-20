@@ -1,0 +1,11 @@
+#version 330 core
+
+#extension GL_ARB_explicit_attrib_location : require
+
+in vec3 colorToFragment;
+out vec4 frag_colour;
+ 
+void main() 
+{
+    frag_colour = vec4(colorToFragment, 1.0);
+}

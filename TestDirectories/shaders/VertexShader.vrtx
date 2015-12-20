@@ -1,0 +1,25 @@
+#version 330 core
+
+#extension GL_ARB_explicit_uniform_location : require
+
+layout (location = 0) in vec3 vertexPosition_modelspace;
+layout (location = 1) in vec3 vertexColor;
+layout (location = 2) uniform float _renderFlag;
+layout (location = 3) in vec3 hexagon;
+layout (location = 4) uniform mat4 MVP;
+
+out vec3 colorToFragment;
+ 
+void main() 
+{
+	gl_Position = MVP * vec4 (vertexPosition_modelspace, 1.0);
+	
+	if (_renderFlag < 0.5)
+	{
+		colorToFragment = vertexColor;
+	}
+	else
+	{
+		colorToFragment = vec3(0.5, 0.5, 0);
+	}
+}
